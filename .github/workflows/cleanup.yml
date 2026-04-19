@@ -1,0 +1,68 @@
+name: Cleanup
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Run once every day at midnight
+  workflow_dispatch:
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Remove old entries
+        run: |
+          if [ -f "allowlist_temporary" ]; then
+            # Calculate cutoff date (3 months ago)
+            cutoff_date=$(date -d "3 months ago" +%s)
+            
+            # Temporary file for valid entries
+            echo "# Temporary Allowlist" > allowlist_temporary.tmp
+            echo "# Add entries one per line. Copy and paste the exact entry from the blocklist." >> allowlist_temporary.tmp
+            echo "# Entries are automatically removed after 90 days." >> allowlist_temporary.tmp
+            echo "# To permanently fix a false positive, please contribute to the upstream lists." >> allowlist_temporary.tmp
+            
+            while IFS= read -r line || [ -n "$line" ]; do
+              # Skip empty lines
+              if [ -z "$line" ]; then continue; fi
+              
+              # Skip comment lines (headers)
+              if [[ "$line" == \#* ]]; then continue; fi
+
+              # Extract date from line (assumes format: rule # YYYY-MM-DD)
+              entry_date_str=$(echo "$line" | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}$' || true)
+              
+              if [ -n "$entry_date_str" ]; then
+                # Convert entry date to seconds
+                entry_date=$(date -d "$entry_date_str" +%s)
+                
+                # Check if entry is newer than cutoff
+                if [ "$entry_date" -ge "$cutoff_date" ]; then
+                  echo "$line" >> allowlist_temporary.tmp
+                else
+                  echo "Removing old entry: $line"
+                fi
+              else
+                 # If no date found, add the current date
+                 echo "$line # $(date +%Y-%m-%d)" >> allowlist_temporary.tmp
+              fi
+            done < allowlist_temporary
+            
+            mv allowlist_temporary.tmp allowlist_temporary
+          fi
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add allowlist_temporary
+          if [[ -n $(git status -s) ]]; then
+            git commit -m "Cleanup allowlist_temporary"
+            git push
+          else
+            echo "No changes to commit"
+          fi
