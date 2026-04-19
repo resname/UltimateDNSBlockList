@@ -1,0 +1,120 @@
+name: Compile List
+
+# Controls when the workflow will run
+on:
+  # Run every hour
+  schedule:
+    - cron: '20 * * * *'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v6
+
+      # Download lists, sort and remove duplicates
+      - name: Update Blocklist
+        run: |
+          mkdir -p list
+          
+          # Download and Clean
+          # Loop through sources.txt, download, and clean each list
+          touch combined_temp.txt
+          while IFS= read -r url || [ -n "$url" ]; do
+            if [ -n "$url" ]; then
+              echo "Downloading $url"
+              # Download and append to temp file
+              curl -s "$url" >> combined_temp.txt
+            fi
+          done < sources.txt
+          
+          # Combine
+          awk '!seen[$0]++' combined_temp.txt > combined_unsorted.txt
+          
+          # Apply Allowlist
+          if [ -f "allowlist_temporary" ]; then
+            # Clean allowlist (remove whitespace, empty lines, and dates)
+            # Remove comments (dates) starting with #
+            sed 's/ *#.*//' allowlist_temporary | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | sed '/^$/d' > allowlist_clean
+            grep -vFx -f allowlist_clean combined_unsorted.txt > combined_cleaned.txt
+            rm allowlist_clean
+          else
+            mv combined_unsorted.txt combined_cleaned.txt
+          fi
+
+          # Check for changes
+          if [ -f list/UltimateDNSBlockList.txt ]; then
+            sed '1,/! ========== Begin Blocklist ==========/d' list/UltimateDNSBlockList.txt > old_blocklist.txt
+          else
+            touch old_blocklist.txt
+          fi
+
+          if cmp -s combined_cleaned.txt old_blocklist.txt; then
+            echo "No changes to blocklist. Skipping update."
+            rm combined_temp.txt combined_unsorted.txt combined_cleaned.txt old_blocklist.txt
+            exit 0
+          fi
+          
+          echo "Changes detected. Updating blocklist..."
+
+          # Increment Version
+          if [ ! -f version.txt ]; then echo "0.00" > version.txt; fi
+          current_version=$(cat version.txt)
+          new_version=$(awk "BEGIN {printf \"%.2f\", $current_version + 0.01}")
+          echo $new_version > version.txt
+
+          # Create Header
+          echo "! Title: UltimateDNSBlockList" > header.txt
+          echo "! Description: The only DNS blocklist you will ever need." >> header.txt
+          echo "! Version: $new_version" >> header.txt
+          echo "! Last modified: $(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> header.txt
+          echo "! License: https://github.com/${{ github.repository }}/blob/main/LICENSE" >> header.txt
+          echo "!" >> header.txt
+          echo "! ========== Begin Sources ==========" >> header.txt
+          while IFS= read -r line || [ -n "$line" ]; do
+            if [ -n "$line" ]; then
+              echo "! $line" >> header.txt
+            fi
+          done < sources.txt
+          echo "! ========== End Sources ==========" >> header.txt
+          # Add Spacing
+          echo "!" >> header.txt
+
+          # Add Count to Header
+          line_count=$(wc -l < combined_cleaned.txt | xargs)
+          echo "! Line Count: $line_count" >> header.txt
+          echo "!" >> header.txt
+
+          # Add Spacing
+          echo "! ========== Begin Blocklist ==========" >> header.txt
+          
+          # Final Output
+          cat header.txt combined_cleaned.txt > list/UltimateDNSBlockList.txt
+          
+          # Cleanup
+          rm combined_temp.txt combined_unsorted.txt combined_cleaned.txt header.txt old_blocklist.txt
+
+      # Comit and push changes if there are any
+      - name: Commit and Push
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add list/UltimateDNSBlockList.txt version.txt
+          if [[ -n $(git status -s) ]]; then
+            git commit -m "Update UltimateDNSBlockList.txt to version $(cat version.txt)"
+            git push
+          else
+            echo "No changes to commit"
+          fi
