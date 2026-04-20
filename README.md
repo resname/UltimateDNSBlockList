@@ -2,8 +2,8 @@
 
 **Comprehensive, automatically updated DNS blocklist for ad blocking, tracker prevention, and malware protection.**
 
-![GitHub last commit](https://img.shields.io/github/last-commit/resname/BigBlockList)
-![GitHub license](https://img.shields.io/github/license/resname/BigBlockList)
+![GitHub last commit](https://img.shields.io/github/last-commit/resname/UltimateDNSBlockList)
+![GitHub license](https://img.shields.io/github/license/resname/UltimateDNSBlockList)
 
 ## Overview
 
