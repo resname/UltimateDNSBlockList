@@ -27,7 +27,7 @@ This list aggregates the following well-established upstream providers:
 
 ## Update Frequency
 
-The list is rebuilt and published **every hour** to ensure timely coverage of newly registered tracking and malware domains.
+The list is rebuilt and published at **least once every day** to ensure timely coverage of newly registered tracking and malware domains.
 
 ## Quick Start
 
