@@ -29,14 +29,16 @@ jobs:
         run: |
           mkdir -p list
           
-          # Download and Clean
+            # Download and Clean
           # Loop through sources.txt, download, and clean each list
           touch combined_temp.txt
           while IFS= read -r url || [ -n "$url" ]; do
             if [ -n "$url" ]; then
               echo "Downloading $url"
-              # Download and append to temp file
-              curl -s "$url" >> combined_temp.txt
+              curl -fsSL --max-time 120 --retry 3 --retry-delay 5 "$url" >> combined_temp.txt || {
+                echo "ERROR: Failed to download $url" >&2
+                exit 1
+              }
             fi
           done < sources.txt
           
