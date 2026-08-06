@@ -1,7 +1,7 @@
 ! Title: UltimateDNSBlockList
 ! Description: The only DNS blocklist you will ever need.
-! Version: 8.42
-! Last modified: 2026-08-06T03:45:16Z
+! Version: 8.43
+! Last modified: 2026-08-06T07:07:19Z
 ! License: https://github.com/resname/UltimateDNSBlockList/blob/main/LICENSE
 !
 ! ========== Begin Sources ==========
@@ -10,7 +10,7 @@
 ! https://raw.githubusercontent.com/hagezi/dns-blocklists/refs/heads/main/adguard/dns-rebind-protection.txt
 ! ========== End Sources ==========
 !
-! Line Count: 542720
+! Line Count: 542792
 !
 ! ========== Begin Blocklist ==========
 !
@@ -18,7 +18,7 @@
 ! Description: Filter composed of several other filters (AdGuard Base filter, Social media filter, Tracking Protection filter, Mobile ads filter, EasyList, EasyPrivacy, etc) and simplified specifically to be better compatible with DNS-level ad blocking.
 ! Homepage: https://github.com/AdguardTeam/AdguardSDNSFilter
 ! License: https://github.com/AdguardTeam/AdguardSDNSFilter/blob/master/LICENSE
-! Last modified: 2026-08-06T03:07:01.272Z
+! Last modified: 2026-08-06T06:59:53.116Z
 ! Compiled by @adguard/hostlist-compiler v2.1.0
 ! Source name: AdGuard Base filter ad servers
 ! Source: https://adguardteam.github.io/AdguardFilters/BaseFilter/sections/adservers.txt
@@ -28,6 +28,10 @@
 ! Good: ||doubleclick.net^$third-party
 ! Bad: /banner.jpg (should be in general_url.txt)
 ! Bad: ||adssubdomain.legitwebsite.com^ (should be in adservers_firstparty.txt)
+||wellworn-lead.com^
+||prehurl.com^
+||pusqfnqjeekvd.website^
+||blakeunwanted.com^
 ||ropeshippingcatchy.com^
 ||mn.browpotware.com^
 ||inklinkor.com^
@@ -7580,6 +7584,7 @@ vkcdnservice.appspot.com^
 ||2838a86e6c.com^
 ||2878644238.com^
 ||287o8ff2pyl3ht.cfd^
+||288ze6cfvyocywwm5zhb48pnjgx9j41x.cfd^
 ||28a0578796.com^
 ||28cb84740b.com^
 ||28f810077f.com^
@@ -9738,6 +9743,7 @@ vkcdnservice.appspot.com^
 ||aegmdwmvhesof.website^
 ||aegxekrepfbqw.com^
 ||aehcglvkpn.com^
+||aehjiuheifpop.online^
 ||aeipkipezecpt.website^
 ||aeiptbtyknklq.online^
 ||aeiwzejwyzqjy.rocks^
@@ -9930,6 +9936,7 @@ vkcdnservice.appspot.com^
 ||agencyrearrangepasture.com^
 ||agencytroops.com^
 ||agendadejection.com^
+||agenizeoutplod.qpon^
 ||agenteimmobiliare.info^
 ||agfasjfhveoqf.online^
 ||agghhivwi.com^
@@ -11287,6 +11294,7 @@ vkcdnservice.appspot.com^
 ||assurgeamictusnoyau.cfd^
 ||assyctifor.com^
 ||assyriaupbuild.com^
+||astableansate.qpon^
 ||astablehazanut.cyou^
 ||astartlycea.qpon^
 ||astasiabedels.cfd^
@@ -11494,6 +11502,7 @@ vkcdnservice.appspot.com^
 ||aukgiecbioahe.website^
 ||aukharier.cyou^
 ||aukjylvsljien.site^
+||aukmspkqzptsn.site^
 ||aukygkusnaqxf.online^
 ||aulahmuuniglx.space^
 ||aulossyllab.qpon^
@@ -12449,6 +12458,7 @@ vkcdnservice.appspot.com^
 ||behindcanary.com^
 ||beholdsresinsimprevu.cfd^
 ||behovepimp.qpon^
+||behowlbasongo.qpon^
 ||behqtk5t76nhmnmnb1bmw8f91n6b8rj.cfd^
 ||behvjsweshylu.online^
 ||beigedevotedcockpit.com^
@@ -12939,6 +12949,7 @@ vkcdnservice.appspot.com^
 ||birlinnzebraic.cyou^
 ||birmadonzellittles.cyou^
 ||birmaenvire.cfd^
+||birthedbegging.cyou^
 ||birthjeans.icu^
 ||bisa-aja.my.id^
 ||bisetsoliped.com^
@@ -13442,6 +13453,7 @@ vkcdnservice.appspot.com^
 ||boobausauhipsa.net^
 ||boobbounds.com^
 ||boodhseatersspecks.cyou^
+||boodiestrati.shop^
 ||boodkfcdgaaiy.website^
 ||boodsprank.cfd^
 ||booezozlvdg.com^
@@ -17810,6 +17822,7 @@ vkcdnservice.appspot.com^
 ||decalbatussi.qpon^
 ||decanesuperb.shop^
 ||deccsvyxcvhfe.website^
+||decdscruff.qpon^
 ||deceivedaisle.com^
 ||decemnylgau.cyou^
 ||decencycrock.com^
@@ -18689,6 +18702,7 @@ vkcdnservice.appspot.com^
 ||djwcmdxfqfyoq.website^
 ||djxh1.com^
 ||djxyosopnferfdm.com^
+||djywzpecaqudh.site^
 ||dkattqczpqtsi.site^
 ||dkbwsvxzvypyb.space^
 ||dkcarxqotiviv.website^
@@ -19499,6 +19513,7 @@ vkcdnservice.appspot.com^
 ||dsvyrt.com^
 ||dsvzpe.com^
 ||dswagqnjedlcq.site^
+||dswbir.com^
 ||dswckxxivdrjj.website^
 ||dswdwe.com^
 ||dswegk.com^
@@ -21467,6 +21482,7 @@ vkcdnservice.appspot.com^
 ||ewyvuznndlmrk.online^
 ||ex7wk49t7jxz4ei6mzztxbyf.cfd^
 ||exacdn.com^
+||exactgodiva.qpon^
 ||exactlyrunlet.shop^
 ||exactlyrutisland.com^
 ||exalted-engineering.com^
@@ -22176,6 +22192,7 @@ vkcdnservice.appspot.com^
 ||femalesfellowship.com^
 ||feminineconsequence.com^
 ||fempjfqhpylty.space^
+||femwretnoujgm.site^
 ||fenacheaverage.com^
 ||fencersoctoid.cfd^
 ||fenchylsquali.qpon^
@@ -22305,6 +22322,7 @@ vkcdnservice.appspot.com^
 ||fgqyxgbqfxyot.website^
 ||fgsildmh.com^
 ||fgsuxvboquxjg.website^
+||fgsxkowyyvqhd.space^
 ||fgtpvheoxosfk.site^
 ||fgxllefnphgtu.site^
 ||fgxsmuyzcrshu.space^
@@ -23796,6 +23814,7 @@ vkcdnservice.appspot.com^
 ||gaelwvtomjmbm.store^
 ||gafefhednctfh.site^
 ||gaflphlwqqhch.site^
+||gafwcnsqycsln.site^
 ||gaggedtetrode.com^
 ||gahkoekeybyxv.online^
 ||gaietyunhappy.com^
@@ -23830,6 +23849,7 @@ vkcdnservice.appspot.com^
 ||galikbrekkygreeter.cyou^
 ||galileiplinker.qpon^
 ||galitaillevessels.cfd^
+||galjoeniowa.qpon^
 ||gallantfamineana.com^
 ||galleonentopic.com^
 ||gallerieshub.com^
@@ -24007,6 +24027,7 @@ vkcdnservice.appspot.com^
 ||gbede.com^
 ||gbedxtcoyviwt.space^
 ||gbgomscmeyenl.site^
+||gbgpaffsfayqz.site^
 ||gbgztjjepqrim.space^
 ||gbhbfosvxplgs.space^
 ||gbhyhxkdwqzjf.site^
@@ -24270,6 +24291,7 @@ vkcdnservice.appspot.com^
 ||gfsxnxkodn.com^
 ||gftgbrixcmukd.site^
 ||gftlexvemldjk.online^
+||gftvp7ycgy2xblknoni1rgn.rest^
 ||gfuhjxhpkwger.space^
 ||gfvildtxwbgzi.online^
 ||gfxdn.pics^
@@ -24668,6 +24690,7 @@ vkcdnservice.appspot.com^
 ||glumrevenue.com^
 ||glusidforwake.qpon^
 ||glutenmuttsensuous.com^
+||glutenscalinda.cyou^
 ||glutsillfareplutei.cfd^
 ||gluvrkcvvldus.website^
 ||glvhvesvnp.com^
@@ -25491,6 +25514,7 @@ vkcdnservice.appspot.com^
 ||gxyduajakignv.website^
 ||gxyrpjc41262c8666geqw59u3.cfd^
 ||gxzdtidwuvmtu.website^
+||gy814j4yum8cmwe1bb.rest^
 ||gybmppuezjtqe.space^
 ||gycjygwxcm.com^
 ||gycrrespjfqwk.store^
@@ -26629,6 +26653,7 @@ vkcdnservice.appspot.com^
 ||hoeencpohchbi.online^
 ||hoeg5rfqxvwlphpo95hh64k53.cfd^
 ||hoeinstitutionbye.com^
+||hoernaegait.qpon^
 ||hofxbrhznoggg.space^
 ||hogard.cyou^
 ||hogfishsurname.qpon^
@@ -27459,6 +27484,7 @@ vkcdnservice.appspot.com^
 ||icycscawowwmw.online^
 ||icyporno.com^
 ||id5-sync.com^
+||idabignou.qpon^
 ||idclbvpablytl.site^
 ||iddeyrdpgq.com^
 ||iddirhvqkjzyh.site^
@@ -27820,6 +27846,7 @@ vkcdnservice.appspot.com^
 ||imaginative-hope.com^
 ||imaginativebattle.com^
 ||imaginativecity.pro^
+||imaginativesweet.pro^
 ||imaginemothcurved.com^
 ||imagingkneelankiness.com^
 ||imagingprelawpuzzle.com^
@@ -28170,6 +28197,7 @@ vkcdnservice.appspot.com^
 ||inkfeedmausoleum.com^
 ||inkgdrdgypkar.website^
 ||inkielectionovoids.cfd^
+||inkingnabby.cfd^
 ||inklaotqejnmh.online^
 ||inklessaughy.qpon^
 ||inkmaniodid.cyou^
@@ -29332,6 +29360,7 @@ vkcdnservice.appspot.com^
 ||jge8xq1yhwefzq1fo4.cfd^
 ||jghmklgkk.com^
 ||jghxljvxhyyhy.online^
+||jgjduiropn.com^
 ||jgjpetqrqmklc.website^
 ||jgkgqvxmnrxjb.space^
 ||jgkpsxlnqnknp.site^
@@ -29785,6 +29814,7 @@ vkcdnservice.appspot.com^
 ||jrbbavbvqmbaz.top^
 ||jreanjvuvpmy.in^
 ||jrjexx.com^
+||jrjmgjfefawpy.site^
 ||jrkihvllezsla.space^
 ||jrkqaustuajsv.website^
 ||jrkveqlzvpcmd.space^
@@ -31518,6 +31548,7 @@ vkcdnservice.appspot.com^
 ||larariawirdholiday.qpon^
 ||larchesrotates.com^
 ||lardedronnels.cyou^
+||lardrymizzenspointel.cfd^
 ||lardylathercenter.com^
 ||largeconfusion.com^
 ||largeconsulting.org^
@@ -32082,6 +32113,7 @@ vkcdnservice.appspot.com^
 ||lifoutbultic.com^
 ||liftdna.com^
 ||liftedd.net^
+||liftmendrubbed.cfd^
 ||liftopbdklkxg.space^
 ||ligatus.com^
 ||ligcspstbrvgf.online^
@@ -32181,6 +32213,7 @@ vkcdnservice.appspot.com^
 ||linksecurecd.com^
 ||linksprf.com^
 ||linocutgashly.cfd^
+||linolinmorisco.qpon^
 ||linosalive.qpon^
 ||linosfohn.shop^
 ||linoxynmezo.cfd^
@@ -33623,6 +33656,7 @@ vkcdnservice.appspot.com^
 ||mbirainfarct.cyou^
 ||mbjrkm2.com^
 ||mbjrkmms.com^
+||mbkbvszqhxnzb.online^
 ||mbkjarrnxwrty.online^
 ||mbkkrjbdhhdef.online^
 ||mbkozdddphadk.site^
@@ -34827,6 +34861,7 @@ vkcdnservice.appspot.com^
 ||mpsfwrurozogw.space^
 ||mpsuadv.ru^
 ||mpsxqpeqnfjck.site^
+||mptdrqntkidyq.site^
 ||mptentry.com^
 ||mptgate.com^
 ||mptkltomzlexc.site^
@@ -36600,6 +36635,7 @@ vkcdnservice.appspot.com^
 ||nubbierfecit.cyou^
 ||nubumwpmqpslh.website^
 ||nucelliscreaky.qpon^
+||nucleindinkly.com^
 ||nucleinhoopedazotes.cfd^
 ||nucleo.online^
 ||nucmhydicaw.in^
@@ -38320,6 +38356,7 @@ vkcdnservice.appspot.com^
 ||owxpzlhikjoyj.store^
 ||owxsolpqxqyiy.space^
 ||owywlwjvvkcjc.site^
+||ox7mkp7rkbzrel5fc4.cfd^
 ||oxacidunfiend.shop^
 ||oxado.com^
 ||oxamidegimpy.cfd^
@@ -40217,6 +40254,7 @@ vkcdnservice.appspot.com^
 ||potorooazo.shop^
 ||potphx.com^
 ||potpxgxuszbiu.online^
+||potracklapser.qpon^
 ||potskolu.net^
 ||potslascivious.com^
 ||potterimportengineering.com^
@@ -41139,7 +41177,6 @@ vkcdnservice.appspot.com^
 ||pushyimmaculateinestimable.com^
 ||pushyresidential.com^
 ||pusishegre.com^
-||pusqfnqjeekvd.website^
 ||pussl3.com^
 ||pussl48.com^
 ||pusslydohter.qpon^
@@ -41295,6 +41332,7 @@ vkcdnservice.appspot.com^
 ||pyvfwe972772o26uv.rest^
 ||pyvhosskljrr.com^
 ||pyxheed.qpon^
+||pzaovfjaja.in^
 ||pzbtbwepicwjn.site^
 ||pzbxnlourkdrv.site^
 ||pzckypp.beer^
@@ -43096,6 +43134,7 @@ vkcdnservice.appspot.com^
 ||resentreaccotia.com^
 ||resetcong.shop^
 ||resewsandrolglucke.qpon^
+||resewseremuriyolden.cfd^
 ||reshakeclifts.cfd^
 ||reshipparky.cfd^
 ||residencechalked.com^
@@ -43247,6 +43286,7 @@ vkcdnservice.appspot.com^
 ||revoirodinian.shop^
 ||revolutionary2.fun^
 ||revolutiontelegram.com^
+||revolvevelocitytrey.com^
 ||revolving-host.com^
 ||revolving-type.com^
 ||revolvingemergency.com^
@@ -44357,6 +44397,7 @@ vkcdnservice.appspot.com^
 ||rxjvmsvfvstue.website^
 ||rxk67z8ec43qo9bj346.rest^
 ||rxkayupbjvt.com^
+||rxkekzusevdok.com^
 ||rxkrnofyhchvm.site^
 ||rxlvemmsokvfi.online^
 ||rxmqrbbhwbdeh.website^
@@ -48393,6 +48434,7 @@ vkcdnservice.appspot.com^
 ||tdgvugryo.com^
 ||tdhcdlnvrhyyj.site^
 ||tdhkpzazswjqj.site^
+||tdhuutnjrparf.space^
 ||tdhvk8we.xyz^
 ||tdiziyfbhydbu.online^
 ||tdkaapcziaoty.website^
@@ -48614,6 +48656,7 @@ vkcdnservice.appspot.com^
 ||testtubeabilityinvited.com^
 ||tetchlemonfingu.qpon^
 ||tetqudyeycomy.site^
+||tetricllama.qpon^
 ||tetrylargute.cfd^
 ||tetterssynedra.qpon^
 ||tetvxsedkmlgh.site^
@@ -50020,6 +50063,7 @@ vkcdnservice.appspot.com^
 ||tuffoonincaged.com^
 ||tufpdudrafwdh.site^
 ||tufterafshar.cfd^
+||tuggedtepefy.cfd^
 ||tugriktrehala.shop^
 ||tuhhdcjnnppuk.site^
 ||tuhhfhswiabhz.space^
@@ -51722,6 +51766,7 @@ vkcdnservice.appspot.com^
 ||uzioxnjmnonzu.site^
 ||uzjvhbzumhnkg.online^
 ||uzkkmeqgofrmcf.cfd^
+||uzmejkpdipkoz.website^
 ||uzocxzrbkcrpk.online^
 ||uzokb1ivryvorr28cuhhhx2nb2p.cfd^
 ||uzpuaveerqjei.site^
@@ -52319,6 +52364,7 @@ vkcdnservice.appspot.com^
 ||viiuwecw.com^
 ||viiwgrhk.com^
 ||viixdjse.com^
+||viiyawningdepas.cfd^
 ||viiyfuzhypuns.site^
 ||viiyutty.com^
 ||viiyxefb.com^
@@ -53014,6 +53060,7 @@ vkcdnservice.appspot.com^
 ||vypddqizgpkpo.store^
 ||vypmgvwjvgztv.space^
 ||vyragdxymcqtw.online^
+||vyrwmrwmlozsq.site^
 ||vysdevmiatwcx.website^
 ||vyshuddphvxka.store^
 ||vyspfyimbwvls.site^
@@ -53328,6 +53375,7 @@ vkcdnservice.appspot.com^
 ||waxworksoperate.com^
 ||wayanatomyunavailable.com^
 ||wayaopotgirl.qpon^
+||waybillbechalkgarnish.cfd^
 ||wayfarerniece.com^
 ||wayfarerorthodox.com^
 ||waygonenegrita.qpon^
@@ -53471,6 +53519,7 @@ vkcdnservice.appspot.com^
 ||weatherplllatform.com^
 ||weavekidnapfreaky.com^
 ||weaveradrenaline.com^
+||weaverlupe.cyou^
 ||weaversprinkle.com^
 ||weaveworkingheaviness.com^
 ||web-guardian.xyz^
@@ -53585,7 +53634,6 @@ vkcdnservice.appspot.com^
 ||wellliveblog.com^
 ||welllwrite.com^
 ||wellmadesurvey.pro^
-||wellworn-lead.com^
 ||wellworn-phrase.com^
 ||welseyer.qpon^
 ||welshedwaywort.shop^
@@ -54077,6 +54125,7 @@ vkcdnservice.appspot.com^
 ||wjugygvvdouyk.space^
 ||wjvhbfbl83v4t1.cfd^
 ||wjwdlfxtdydci.store^
+||wjxcavwpgwqti.space^
 ||wjxdmbftniafy.website^
 ||wjxjomgbxflfc.store^
 ||wk4gxpz1xbtt57bhwb3yete2tf3bz.cfd^
@@ -55115,6 +55164,7 @@ vkcdnservice.appspot.com^
 ||xkcsdxyexvzgj.site^
 ||xkdbbotzyjktw.website^
 ||xkdqhcmfypbqcff.com^
+||xkebeyhrgquze.site^
 ||xkhhdxozfdxgp.website^
 ||xkihevzkxjtdq.website^
 ||xkiinympgstgd.online^
@@ -138970,6 +139020,7 @@ vkcdnservice.appspot.com^
 ||incoming.telemetry.mozilla.org^
 ! Blocking piwik analytics subdomain(for DNS filtering)
 |piwik.
+||api.analytics.dobrosvyaz.com^
 ||tag-v*.kuzen.io^
 ||stats-cdn.polyspeak.ai^
 ||dap.hindustantimes.com^
@@ -164225,12 +164276,12 @@ analytics-*.aasaam.com
 @@||5471782.fls.doubleclick.net^|
 ! Fixing Walmart
 @@||omniture.walmart.com^|[Adblock Plus]
-! Version: 202608060311
+! Version: 202608060706
 ! Title: oisd big
 ! Description: Block. Don't break.
 ! Syntax: Adblock Plus Filter List
-! Entries: 434556
-! Last modified: 2026-08-06T03:11:14+0000
+! Entries: 434577
+! Last modified: 2026-08-06T07:06:13+0000
 ! Expires: 1 hours
 ! License: https://github.com/sjhgvr/oisd/blob/main/LICENSE
 ! Maintainer: Stephan van Ruth
@@ -177342,6 +177393,7 @@ analytics-*.aasaam.com
 ||activitydmy.icu^
 ||activitydocfresh.firebaseapp.com^
 ||activitydocfresh.web.app^
+||activodorena.com^
 ||activodorena.shop^
 ||activonda-ai.com^
 ||activonda-es.live^
@@ -197978,6 +198030,7 @@ analytics-*.aasaam.com
 ||arkanstarmarketing.net^
 ||arkantos1482.workers.dev^
 ||arkanworkshop.com^
+||arkbit-luxen-software.com^
 ||arkbtc.io^
 ||arkbtc.net^
 ||arkcalamity.com^
@@ -206302,6 +206355,7 @@ analytics-*.aasaam.com
 ||bafkreif2iekwddruoxvupittafrix6a7dns6ywmjqakk7phkudzcmdcroi.ipfs.dweb.link^
 ||bafkreif2noq64epia5cmqq5rk5zdzr3466ylkr5xez2r56p27os2vihedi.ipfs.dweb.link^
 ||bafkreif2yjyh5yyih2ro7yxmldilvu5wzejnagxchaphsl7u2qbc6jzrmm.ipfs.dweb.link^
+||bafkreif3gm5xhggs5pawoxjdgjmpbuw4hzoxf3zuff55fo523xjicsftdu.ipfs.inbrowser.link^
 ||bafkreif3hw4pcmrv2jtdtems4rpnobvnyx6uzha2zp2lur7q23qr75ei7m.ipfs.inbrowser.link^
 ||bafkreif3rsioxrpuefca6crtsu5uuzgwghwr44v4g3tcawnyetppwdmjde.ipfs.dweb.link^
 ||bafkreif47ebftby53sqjgmvfhrj3ur4bcaq2q5zearckb4fdkwvoef5v2m.ipfs.inbrowser.link^
@@ -206622,6 +206676,7 @@ analytics-*.aasaam.com
 ||bafkreihildobrerhc2al3pystbjdr5iwint5hlqepk7n36oe2juatk2m3u.ipfs.dweb.link^
 ||bafkreihitaduxmdqk3n72qdzcqjuds2jbl3zahhib6kdp233tm35zkxl34.ipfs.dweb.link^
 ||bafkreihjneryd63h727pigfcidivmh7ubr4fhtes5teqoj5cs4iaill2x4.ipfs.dweb.link^
+||bafkreihjymdqtitupcjqoqwalaxrure2durwnfimgn4t64u5wglgxugiea.ipfs.inbrowser.link^
 ||bafkreihkcrtjklg5bwvdjdfedig6knoclvrmcvx4cks7hutftm4qxma5ou.ipfs.inbrowser.link^
 ||bafkreihlel6wllbosgrymn5dx262iludlgdr6lce4wa4oyyjwts72uvz2q.ipfs.dweb.link^
 ||bafkreihlwytyfiazhbe6g7ohisvxc3divfmxc6ri5qcbes7qq73ootyrmy.ipfs.dweb.link^
@@ -215304,6 +215359,7 @@ analytics-*.aasaam.com
 ||bitcoincn.io^
 ||bitcoincode-pro.com^
 ||bitcoincodeapp.io^
+||bitcoincodes.digital^
 ||bitcoincoin.xyz^
 ||bitcoincompass.io^
 ||bitcoincon.io^
@@ -224064,7 +224120,6 @@ analytics-*.aasaam.com
 ||btc-innova365i.live^
 ||btc-insightapro.live^
 ||btc-intel.franmilla.com^
-||btc-iplexapp.com^
 ||btc-jentis404.live^
 ||btc-jvanta.live^
 ||btc-jvanta920.live^
@@ -228072,6 +228127,7 @@ analytics-*.aasaam.com
 ||calverospark.digital^
 ||calverospark.live^
 ||calverospark.org^
+||calverosparktrade.com^
 ||calvertschool.com^
 ||calviinkielnnl.com^
 ||calvin-klein.pl^
@@ -237424,6 +237480,7 @@ analytics-*.aasaam.com
 ||cichyromans.pl^
 ||ciciliz.pro^
 ||cicilybkathlin.pages.dev^
+||cicinesord.autos^
 ||cicis.today^
 ||cicisplzza.click^
 ||cicisplzza.rest^
@@ -244712,6 +244769,7 @@ analytics-*.aasaam.com
 ||coloradovalleyvets.com^
 ||coloradoweddingcakedesign.com^
 ||coloradoyouthultimate.com^
+||colorammut.autos^
 ||colorandcotton.com^
 ||colorato.net^
 ||colorbtear.casa^
@@ -260844,6 +260902,7 @@ analytics-*.aasaam.com
 ||delvirohaxent.net^
 ||delvonaonix.com^
 ||delvora.xyz^
+||delvornvault.com^
 ||delwick-gainstead.live^
 ||delwickgainstead.live^
 ||delyron.digital^
@@ -272218,6 +272277,7 @@ analytics-*.aasaam.com
 ||e-cte.cn^
 ||e-dappnode.pages.dev^
 ||e-dashing.com^
+||e-devlet-tr.online^
 ||e-devletinvest.digital^
 ||e-devletinvest.live^
 ||e-dex-v3.app^
@@ -291196,6 +291256,7 @@ analytics-*.aasaam.com
 ||finhub7-fugit81.sbs^
 ||finhub7-voluptatem12.sbs^
 ||finhub8-facere50.sbs^
+||finhub9-est12.sbs^
 ||finhub9-eum97.sbs^
 ||finhubio.com^
 ||finhubtrade.ltd^
@@ -291225,16 +291286,8 @@ analytics-*.aasaam.com
 ||finkulrontix.org^
 ||finkurs.digital^
 ||finlab0-dolores91.com^
-||finlab1-quisquam86.sbs^
-||finlab1-quo83.sbs^
-||finlab2-cupiditate16.sbs^
-||finlab4-dolores26.sbs^
 ||finlab5-eveniet49.sbs^
-||finlab5-voluptatem92.sbs^
 ||finlab6-deleniti5.com^
-||finlab6-possimus73.sbs^
-||finlab6-voluptatum23.sbs^
-||finlab8-rerum29.sbs^
 ||finland.nport.link^
 ||finlandpalm.com^
 ||finldab.digital^
@@ -298769,6 +298822,7 @@ analytics-*.aasaam.com
 ||futurnvbnv.com^
 ||futurob.xyz^
 ||futurocalendar.link^
+||futurocapitexai.net^
 ||futurocentrica.com^
 ||futurodigitalmedia.com^
 ||futuroglobalinformacion.com^
@@ -305398,6 +305452,7 @@ analytics-*.aasaam.com
 ||globalyounthydebarbourpcsolutions.torjvacreditunion.vu^
 ||globalzoneclub.com^
 ||globanewsioq.info^
+||globarabbr.autos^
 ||globasentra24.top^
 ||globavortexiora.info^
 ||globds.online^
@@ -306588,6 +306643,7 @@ analytics-*.aasaam.com
 ||gointrads.top^
 ||goiogle.it^
 ||goitsoluciones.com^
+||goiudgh.com^
 ||gojek.org^
 ||gojicaz.com^
 ||gojocoin.com^
@@ -326260,6 +326316,7 @@ analytics-*.aasaam.com
 ||impactstake.com^
 ||impactterminatesank.com^
 ||impactxconnect.com^
+||impagsimbo.autos^
 ||impaktrealestate.com^
 ||impala.kenleyar.ai^
 ||impalasevdasi.com^
@@ -338497,6 +338554,7 @@ analytics-*.aasaam.com
 ||jurnalnova24.com^
 ||jurnalstairakha.com^
 ||jurnaltegal.com^
+||jurnfax.shop^
 ||jurochaplussize.com^
 ||juronexta-qivornelu.pages.dev^
 ||juros-investore.com^
@@ -349203,6 +349261,7 @@ analytics-*.aasaam.com
 ||kyomachiya-kaede-com.pages.dev^
 ||kyorihouse.com^
 ||kyowaind.co.jp^
+||kyphosquea.autos^
 ||kypopt175.weebly.com^
 ||kypra.pro^
 ||kypromise2013.weebly.com^
@@ -350107,6 +350166,7 @@ analytics-*.aasaam.com
 ||lampgnxvfuampt.com^
 ||lampobitmarksoft.com^
 ||lampoinvestecto.click^
+||lampoinvestecto.net^
 ||lamporendecto.click^
 ||lamporendectoai.digital^
 ||lamppoqih.ink^
@@ -387035,6 +387095,7 @@ analytics-*.aasaam.com
 ||myxrt.com^
 ||myxtrade.sbs^
 ||myxy.money^
+||myy-orrderrs3923.eu.cc^
 ||myy7m5.close.futureisready.com^
 ||myyage.com^
 ||myyagodka.online^
@@ -389870,6 +389931,7 @@ analytics-*.aasaam.com
 ||nerufex.com^
 ||nerusidodswesesoasi.site^
 ||nerutima-torimeva.pages.dev^
+||neruvikofalemaro.com^
 ||neruvy.github.io^
 ||neruxbet.com^
 ||nerve.untergrund.net^
@@ -391915,6 +391977,7 @@ analytics-*.aasaam.com
 ||nexiumsol.fun^
 ||nexivolt-core-it.fyi^
 ||nexivolt-core93-it.fyi^
+||nexixv1.net^
 ||nexjornada.upf.br^
 ||nexlares.live^
 ||nexlares.shop^
@@ -396722,6 +396785,7 @@ analytics-*.aasaam.com
 ||ntepexpa2024.weebly.com^
 ||ntfck.com^
 ||ntfclon.netlify.app^
+||ntflixgatewayserv.165-154-255-30.cpanel.site^
 ||ntflixhome.40-81-246-96.cpanel.site^
 ||ntflx-nametnuti.com^
 ||ntflx-supp.com^
@@ -422665,6 +422729,7 @@ analytics-*.aasaam.com
 ||profiling-reports.ucmhpacademy.com^
 ||profiling1.avandor.com^
 ||profill-smd.com^
+||profinafundecor.com^
 ||profincorp.com^
 ||profinites.com^
 ||profintravia.info^
@@ -445275,7 +445340,6 @@ analytics-*.aasaam.com
 ||rowermasterplus.shop^
 ||rowermax.shop^
 ||rowermix.shop^
-||roweroland.pl^
 ||roweromania.shop^
 ||rowerova.shop^
 ||rowerova24.shop^
@@ -450142,6 +450206,7 @@ analytics-*.aasaam.com
 ||sasrim2022.weebly.com^
 ||sasshoes.cc^
 ||sasshoess.cc^
+||sassoguadanzo.com^
 ||sassostatement.weebly.com^
 ||sasssikoodo.com^
 ||sassy-studies.com^
@@ -454271,6 +454336,7 @@ analytics-*.aasaam.com
 ||selrix-biz-silvax-15126.pages.dev^
 ||selsilverifi.icu^
 ||selsipad.com^
+||seltarnik.com^
 ||seltravonia.info^
 ||seltrixiosoftware.com^
 ||selunar.com^
@@ -468047,6 +468113,7 @@ analytics-*.aasaam.com
 ||sopport-bdv0.pages.dev^
 ||sopport-bdv00juex.pages.dev^
 ||sopportdeceunta.webcindario.com^
+||sopradisva.autos^
 ||soprasteriafrance.fr^
 ||sopresscameroun.com^
 ||soprogaming.com^
@@ -469534,6 +469601,7 @@ analytics-*.aasaam.com
 ||spax88k.com^
 ||spax88k.net^
 ||spazarbbanis.info^
+||spaziincav.autos^
 ||spazioind.com^
 ||spb-miele.ru^
 ||spb.royal-change.ru^
@@ -488400,6 +488468,7 @@ analytics-*.aasaam.com
 ||tetreumtoken.com^
 ||tetrislaunch.com^
 ||tetrreeffsfseeewwefrrfw.site^
+||tettaraggi.autos^
 ||tetugamb.com^
 ||teturner.com^
 ||teucox.com^
@@ -488442,6 +488511,7 @@ analytics-*.aasaam.com
 ||tevegqtrnt.help^
 ||tevehivex.help^
 ||tevehivex.shop^
+||tevehivia.help^
 ||tevehivia.shop^
 ||tevehivon.help^
 ||tevehivro.work^
@@ -492523,6 +492593,7 @@ analytics-*.aasaam.com
 ||tifukrebikozq.pro^
 ||tifuku.pro^
 ||tigaikan.com^
+||tigaimpin.autos^
 ||tiganada.com^
 ||tigarshark.com^
 ||tigasaudaratour.com^
@@ -499928,6 +499999,7 @@ analytics-*.aasaam.com
 ||trosskilde.top^
 ||trosten.jojurdi.com^
 ||trostwalletext.wixstudio.com^
+||trotisepti.autos^
 ||trou-fion.com^
 ||trouble.cachetinvestments.com^
 ||troubleccshooterscaprolactams.info^
