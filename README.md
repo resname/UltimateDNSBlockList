@@ -23,7 +23,8 @@ This list aggregates the following well-established upstream providers:
 |--------|-------------|---------------|
 | [AdGuard DNS Filter](https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt) | Composite filter combining AdGuard Base, Social Media, Tracking Protection, Mobile Ads, EasyList, and EasyPrivacy — optimized for DNS-level blocking. | [Report](https://reports.adguard.com/en/new_issue.html) |
 | [OISD Big](https://big.oisd.nl) | Large community-maintained blocklist focused on accurate ad and tracker blocking without disrupting legitimate services. | [Report](https://oisd.nl/report) |
-| [HaGeZi DNS Rebind Protection](https://raw.githubusercontent.com/hagezi/dns-blocklists/refs/heads/main/adguard/dns-rebind-protection.txt) | Specialized security list that protects local networks against DNS rebinding attacks. | [Report](https://github.com/hagezi/dns-blocklists/issues) |
+| [HaGeZi DNS Rebind Protection](https://gitlab.com/hagezi/mirror/-/raw/main/dns-blocklists/adguard/dns-rebind-protection.txt) | Specialized security list that protects local networks against DNS rebinding attacks. | [Report](https://github.com/hagezi/dns-blocklists/issues) |
+| [HaGeZi Multi Normal](https://gitlab.com/hagezi/mirror/-/raw/main/dns-blocklists/adblock/multi.txt) | All-round protection list that blocks ads, trackers, metrics, telemetry, phishing, malware, scams, fakes, cryptojacking, and other junk. | [Report](https://github.com/hagezi/dns-blocklists/issues) |
 
 ## Update Frequency
 
