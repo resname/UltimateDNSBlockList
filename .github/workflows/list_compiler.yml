@@ -46,10 +46,10 @@ jobs:
           awk '!seen[$0]++' combined_temp.txt > combined_unsorted.txt
           
           # Apply Allowlist
-          if [ -f "allowlist_temporary" ]; then
-            # Clean allowlist (remove whitespace, empty lines, and dates)
-            # Remove comments (dates) starting with #
-            sed 's/ *#.*//' allowlist_temporary | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | sed '/^$/d' > allowlist_clean
+          if [ -f "allowlist" ]; then
+            # Clean allowlist (remove whitespace, empty lines, and comments)
+            # Remove comments (lines with #) and inline # comments
+            sed 's/ *#.*//' allowlist | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | sed '/^$/d' > allowlist_clean
             grep -vFx -f allowlist_clean combined_unsorted.txt > combined_cleaned.txt
             rm allowlist_clean
           else
