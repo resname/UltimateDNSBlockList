@@ -84,16 +84,6 @@ Each generated list goes through the same basic flow:
 
 The GitHub Actions workflows live in `.github/workflows/` and are designed to run either on a schedule or manually via the Actions tab.
 
-## Quick Start
-
-Add one of the following URLs to your DNS blocker's subscription list:
-
-```text
-https://raw.githubusercontent.com/resname/UltimateDNSBlockList/refs/heads/main/list/UltimateDNSBlockList.txt
-https://raw.githubusercontent.com/resname/UltimateDNSBlockList/refs/heads/main/list/SmallDNSBlockList.txt
-```
-
-**Compatible with:** Pi-hole (Adlists), AdGuard Home (DNS blocklists), NextDNS, Control D, and any DNS-level blocker that supports plain-text host or domain entries.
 
 ## Contributing
 
