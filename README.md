@@ -36,6 +36,8 @@ https://raw.githubusercontent.com/resname/UltimateDNSBlockList/refs/heads/main/l
 
 **Recommended for most Pi-hole and AdGuard Home installations.** Choose the full list when you want the broadest coverage and your DNS blocker can comfortably handle a larger list.
 
+**Memory guidance:** Reserve about **512 MB of available RAM** for the DNS filtering service when using this list. This is a conservative planning estimate, not a hard minimum or a measured requirement; actual use depends on the DNS blocker, other subscribed lists, and query volume.
+
 ### Small blocklist
 
 This list is compiled from a lighter upstream subset and is intended for users who want a smaller, faster-to-sync list with less noise.
@@ -45,6 +47,10 @@ https://raw.githubusercontent.com/resname/UltimateDNSBlockList/refs/heads/main/l
 ```
 
 Choose the small list for a more conservative setup, a resource-constrained resolver, or when you prefer a smaller subscription. Subscribe to one variant rather than both; the full list already provides broader coverage, so combining them mostly adds redundant entries.
+
+**Memory guidance:** Reserve about **256 MB of available RAM** for the DNS filtering service when using this list. This is a conservative planning estimate, not a hard minimum or a measured requirement; actual use depends on the DNS blocker, other subscribed lists, and query volume.
+
+These figures refer to memory available to the DNS filtering service, in addition to what the operating system and other applications need. Check your installer's platform-specific requirements and monitor actual usage after adding the list.
 
 ## Upstream Sources
 
