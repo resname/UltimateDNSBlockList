@@ -65,11 +65,7 @@ This project aggregates the following providers:
 
 ## Update Frequency
 
-The generated lists are rebuilt on a schedule and published as needed to cover newly registered and newly observed malicious, tracking, or advertising domains.
-
-- Full list: scheduled hourly at minute 25
-- Small list: scheduled hourly at minute 55, 30 minutes after the full-list workflow
-- Version metadata is stored in the repository and bumped each time a publish occurs
+Both lists are updated at least once every day.
 
 ## How the Workflow Works
 
@@ -82,7 +78,7 @@ Each generated list goes through the same basic flow:
 5. Write a new header with version metadata and source attribution
 6. Commit and push the updated list automatically
 
-The GitHub Actions workflows live in `.github/workflows/` and are designed to run either on a schedule or manually via the Actions tab.
+The GitHub Actions workflow lives in `.github/workflows/` and runs on a schedule or manually via the Actions tab. It publishes both generated lists together in one commit when either list changes.
 
 
 ## Contributing
