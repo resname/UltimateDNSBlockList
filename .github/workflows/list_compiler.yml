@@ -108,15 +108,19 @@ jobs:
           # Cleanup
           rm combined_temp.txt combined_unsorted.txt combined_cleaned.txt header.txt old_blocklist.txt
 
-      # Comit and push changes if there are any
+      # Commit and push changes if there are any
       - name: Commit and Push
         run: |
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@github.com'
+          BRANCH="${GITHUB_REF_NAME:-${GITHUB_REF#refs/heads/}}"
+          if [ -n "$BRANCH" ] && git rev-parse --verify "origin/$BRANCH" >/dev/null 2>&1; then
+            git pull --rebase origin "$BRANCH"
+          fi
           git add list/UltimateDNSBlockList.txt version.txt
           if [[ -n $(git status -s) ]]; then
             git commit -m "Update UltimateDNSBlockList.txt to version $(cat version.txt)"
-            git push
+            git push origin HEAD:"$BRANCH"
           else
             echo "No changes to commit"
           fi
