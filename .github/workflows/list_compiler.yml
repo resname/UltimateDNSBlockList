@@ -9,6 +9,10 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+concurrency:
+  group: blocklist-publish-${{ github.ref }}
+  cancel-in-progress: false
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -114,13 +118,16 @@ jobs:
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@github.com'
           BRANCH="${GITHUB_REF_NAME:-${GITHUB_REF#refs/heads/}}"
-          if [ -n "$BRANCH" ] && git rev-parse --verify "origin/$BRANCH" >/dev/null 2>&1; then
-            git pull --rebase origin "$BRANCH"
+          if [ -z "$BRANCH" ]; then
+            echo "ERROR: Unable to determine branch name" >&2
+            exit 1
           fi
           git add list/UltimateDNSBlockList.txt version.txt
-          if [[ -n $(git status -s) ]]; then
-            git commit -m "Update UltimateDNSBlockList.txt to version $(cat version.txt)"
-            git push origin HEAD:"$BRANCH"
-          else
+          if git diff --cached --quiet; then
             echo "No changes to commit"
+            exit 0
           fi
+          git commit -m "Update UltimateDNSBlockList.txt to version $(cat version.txt)"
+          git fetch origin "$BRANCH"
+          git rebase FETCH_HEAD
+          git push origin HEAD:"$BRANCH"
