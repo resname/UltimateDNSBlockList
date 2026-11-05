@@ -2,7 +2,7 @@ name: Compile List
 
 # Controls when the workflow will run
 on:
-  # Run both list builds every hour
+  # Run all list builds every hour
   schedule:
     - cron: '25 * * * *'
 
@@ -28,14 +28,15 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v6
 
-      - name: Compile both blocklists
+      - name: Compile all blocklists
         run: |
-          mkdir -p list
+          mkdir -p lists
           compile_list() {
             local source_file="$1"
             local output_file="$2"
             local version_file="$3"
             local title="$4"
+            local description="$5"
             local work_dir
             work_dir=$(mktemp -d)
 
@@ -92,16 +93,10 @@ jobs:
 
             {
               echo "! Title: $title"
-              echo "! Description: The only DNS blocklist you will ever need."
+              echo "! Description: $description"
               echo "! Version: $new_version"
               echo "! Last modified: $(date -u +"%Y-%m-%dT%H:%M:%SZ")"
               echo "! License: https://github.com/${{ github.repository }}/blob/main/LICENSE"
-              echo "!"
-              echo "! ========== Begin Sources =========="
-              while IFS= read -r line || [ -n "$line" ]; do
-                if [ -n "$line" ]; then echo "! $line"; fi
-              done < "$source_file"
-              echo "! ========== End Sources =========="
               echo "!"
               echo "! Line Count: $(wc -l < "$work_dir/cleaned.txt" | xargs)"
               echo "!"
@@ -111,8 +106,10 @@ jobs:
             rm -rf "$work_dir"
           }
 
-          compile_list sources.txt list/UltimateDNSBlockList.txt version.txt UltimateDNSBlockList
-          compile_list sources-small.txt list/SmallDNSBlockList.txt small-version.txt SmallDNSBlockList
+          compile_list Sources/sources.txt lists/UltimateDNSBlockList.txt version.txt UltimateDNSBlockList "The only DNS blocklist you will ever need."
+          compile_list Sources/sources-small.txt lists/SmallDNSBlockList.txt small-version.txt SmallDNSBlockList "A smaller DNS blocklist for lighter-weight protection."
+          compile_list Sources/sources-nsfw.txt lists/NSFWBlockList.txt nsfw-version.txt NSFWBlockList "Blocks adult content."
+          compile_list Sources/sources-nsfw-small.txt lists/SmallNSFWBlockList.txt nsfw-small-version.txt SmallNSFWBlockList "A smaller blocklist for adult content."
 
       # Commit and push changes if there are any
       - name: Commit and Push
@@ -124,7 +121,8 @@ jobs:
             echo "ERROR: Unable to determine branch name" >&2
             exit 1
           fi
-          git add list/UltimateDNSBlockList.txt version.txt list/SmallDNSBlockList.txt small-version.txt
+          git add lists/UltimateDNSBlockList.txt version.txt lists/SmallDNSBlockList.txt small-version.txt \
+            lists/NSFWBlockList.txt nsfw-version.txt lists/SmallNSFWBlockList.txt nsfw-small-version.txt
           if git diff --cached --quiet; then
             echo "No changes to commit"
             exit 0
