@@ -150,7 +150,8 @@ jobs:
             echo "No changes to commit"
             exit 0
           fi
-          git commit -m "Update DNS blocklists"
+          VERSION=$(cat version.txt)
+          git commit -m "Version $VERSION"
           git fetch origin "$BRANCH"
           git rebase FETCH_HEAD
           git push origin HEAD:"$BRANCH"
