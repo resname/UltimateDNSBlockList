@@ -31,85 +31,108 @@ jobs:
       - name: Compile all blocklists
         run: |
           mkdir -p list
+          work_dir=$(mktemp -d)
+          trap 'rm -rf "$work_dir"' EXIT
+          declare -a output_files titles descriptions body_files
+          content_changed=0
+
           compile_list() {
             local source_file="$1"
             local output_file="$2"
-            local version_file="$3"
-            local title="$4"
-            local description="$5"
-            local work_dir
-            work_dir=$(mktemp -d)
+            local title="$3"
+            local description="$4"
+            local index="${#output_files[@]}"
+            local source_data="$work_dir/$index-sources.txt"
+            local old_data="$work_dir/$index-old.txt"
+            local cleaned_data="$work_dir/$index-cleaned.txt"
+            : > "$source_data"
 
             while IFS= read -r url || [ -n "$url" ]; do
               if [ -n "$url" ]; then
                 echo "Downloading $url"
-                curl -fsSL --max-time 120 --retry 3 --retry-delay 5 "$url" >> "$work_dir/sources.txt" || {
+                curl -fsSL --max-time 120 --retry 3 --retry-delay 5 "$url" >> "$source_data" || {
                   echo "ERROR: Failed to download $url" >&2
-                  rm -rf "$work_dir"
                   return 1
                 }
               fi
             done < "$source_file"
 
-            if [ ! -s "$work_dir/sources.txt" ]; then
+            if [ ! -s "$source_data" ]; then
               echo "ERROR: No source content downloaded from $source_file" >&2
-              rm -rf "$work_dir"
               return 1
             fi
 
-            awk '!seen[$0]++' "$work_dir/sources.txt" > "$work_dir/unique.txt"
+            awk '!seen[$0]++' "$source_data" > "$work_dir/$index-unique.txt"
             if [ -f allowlist ]; then
               sed 's/ *#.*//' allowlist | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | sed '/^$/d' > "$work_dir/allowlist.txt"
-              if grep -vFx -f "$work_dir/allowlist.txt" "$work_dir/unique.txt" > "$work_dir/cleaned.txt"; then
+              if grep -vFx -f "$work_dir/allowlist.txt" "$work_dir/$index-unique.txt" > "$cleaned_data"; then
                 :
               else
                 grep_status=$?
                 if [ "$grep_status" -ne 1 ]; then
                   echo "ERROR: Failed to apply allowlist" >&2
-                  rm -rf "$work_dir"
                   return "$grep_status"
                 fi
               fi
             else
-              cp "$work_dir/unique.txt" "$work_dir/cleaned.txt"
+              cp "$work_dir/$index-unique.txt" "$cleaned_data"
             fi
 
             if [ -f "$output_file" ]; then
-              sed '1,/! ========== Begin Blocklist ==========/d' "$output_file" > "$work_dir/old.txt"
+              sed '1,/! ========== Begin Blocklist ==========/d' "$output_file" > "$old_data"
             else
-              : > "$work_dir/old.txt"
+              : > "$old_data"
             fi
 
-            if cmp -s "$work_dir/cleaned.txt" "$work_dir/old.txt"; then
-              echo "No content changes for $output_file."
-              rm -rf "$work_dir"
-              return 0
+            if ! cmp -s "$cleaned_data" "$old_data"; then
+              content_changed=1
             fi
 
-            if [ ! -f "$version_file" ]; then echo "0.00" > "$version_file"; fi
-            current_version=$(cat "$version_file")
-            new_version=$(awk "BEGIN {printf \"%.2f\", $current_version + 0.01}")
-            echo "$new_version" > "$version_file"
-
-            {
-              echo "! Title: $title"
-              echo "! Description: $description"
-              echo "! Version: $new_version"
-              echo "! Last modified: $(date -u +"%Y-%m-%dT%H:%M:%SZ")"
-              echo "! License: https://github.com/${{ github.repository }}/blob/main/LICENSE"
-              echo "!"
-              echo "! Line Count: $(wc -l < "$work_dir/cleaned.txt" | xargs)"
-              echo "!"
-              echo "! ========== Begin Blocklist =========="
-            } > "$work_dir/header.txt"
-            cat "$work_dir/header.txt" "$work_dir/cleaned.txt" > "$output_file"
-            rm -rf "$work_dir"
+            output_files+=("$output_file")
+            titles+=("$title")
+            descriptions+=("$description")
+            body_files+=("$cleaned_data")
           }
 
-          compile_list Sources/sources.txt list/UltimateDNSBlockList.txt version.txt UltimateDNSBlockList "The only DNS blocklist you will ever need."
-          compile_list Sources/sources-small.txt list/SmallDNSBlockList.txt small-version.txt SmallDNSBlockList "A smaller DNS blocklist for lighter-weight protection."
-          compile_list Sources/sources-nsfw.txt list/NSFWBlockList.txt nsfw-version.txt NSFWBlockList "Blocks adult content."
-          compile_list Sources/sources-nsfw-small.txt list/SmallNSFWBlockList.txt nsfw-small-version.txt SmallNSFWBlockList "A smaller blocklist for adult content."
+          compile_list Sources/sources.txt list/UltimateDNSBlockList.txt UltimateDNSBlockList "The only DNS blocklist you will ever need."
+          compile_list Sources/sources-small.txt list/SmallDNSBlockList.txt SmallDNSBlockList "A smaller DNS blocklist for lighter-weight protection."
+          compile_list Sources/sources-nsfw.txt list/NSFWBlockList.txt NSFWBlockList "Blocks adult content."
+          compile_list Sources/sources-nsfw-small.txt list/SmallNSFWBlockList.txt SmallNSFWBlockList "A smaller blocklist for adult content."
+
+          if [ ! -f version.txt ]; then echo "0.00" > version.txt; fi
+          current_version=$(cat version.txt)
+          if [ "$content_changed" -eq 1 ]; then
+            current_version=$(awk "BEGIN {printf \"%.2f\", $current_version + 0.01}")
+            echo "$current_version" > version.txt
+          fi
+
+          last_modified=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          for index in "${!output_files[@]}"; do
+            output_file="${output_files[$index]}"
+            body_file="${body_files[$index]}"
+            line_count=$(wc -l < "$body_file" | xargs)
+            existing_version=""
+            if [ -f "$output_file" ]; then
+              existing_version=$(sed -n 's/^! Version: //p' "$output_file" | head -n 1)
+            fi
+
+            if [ "$content_changed" -eq 1 ] || [ "$existing_version" != "$current_version" ] || [ ! -f "$output_file" ]; then
+              {
+                echo "! Title: ${titles[$index]}"
+                echo "! Description: ${descriptions[$index]}"
+                echo "! Version: $current_version"
+                echo "! Last modified: $last_modified"
+                echo "! License: https://github.com/${{ github.repository }}/blob/main/LICENSE"
+                echo "!"
+                echo "! Line Count: $line_count"
+                echo "!"
+                echo "! ========== Begin Blocklist =========="
+              } > "$work_dir/header.txt"
+              cat "$work_dir/header.txt" "$body_file" > "$output_file"
+            else
+              echo "No content changes for $output_file."
+            fi
+          done
 
       # Commit and push changes if there are any
       - name: Commit and Push
@@ -121,8 +144,8 @@ jobs:
             echo "ERROR: Unable to determine branch name" >&2
             exit 1
           fi
-          git add list/UltimateDNSBlockList.txt version.txt list/SmallDNSBlockList.txt small-version.txt \
-            list/NSFWBlockList.txt nsfw-version.txt list/SmallNSFWBlockList.txt nsfw-small-version.txt
+          git add list/UltimateDNSBlockList.txt list/SmallDNSBlockList.txt \
+            list/NSFWBlockList.txt list/SmallNSFWBlockList.txt version.txt
           if git diff --cached --quiet; then
             echo "No changes to commit"
             exit 0

@@ -99,9 +99,7 @@ The GitHub Actions workflow lives in `.github/workflows/` and runs on a schedule
 
 - `Sources/` — text files containing the upstream feed URLs
 - `allowlist` — domains intentionally excluded from published output
-- `version.txt` — current version for the full list
-- `small-version.txt` — current version for the small list
-- `nsfw-version.txt` and `nsfw-small-version.txt` — current versions for the NSFW lists
+- `version.txt` — shared version number for all four lists
 - `list/UltimateDNSBlockList.txt` — generated full output
 - `list/SmallDNSBlockList.txt` — generated small output
 - `list/NSFWBlockList.txt` — generated NSFW output
