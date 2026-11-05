@@ -33,7 +33,7 @@ The goal is to provide strong network-wide filtering without creating a heavy ma
 This is the default, broad coverage list for most installations.
 
 ```text
-https://raw.githubusercontent.com/resname/UltimateDNSBlockList/refs/heads/main/lists/UltimateDNSBlockList.txt
+https://raw.githubusercontent.com/resname/UltimateDNSBlockList/refs/heads/main/list/UltimateDNSBlockList.txt
 ```
 
 **Recommended for most Pi-hole and AdGuard Home installations.** Choose the full list when you want the broadest coverage and your DNS blocker can comfortably handle a larger list.
@@ -45,7 +45,7 @@ https://raw.githubusercontent.com/resname/UltimateDNSBlockList/refs/heads/main/l
 This list is compiled from a lighter upstream subset and is intended for users who want a smaller, faster-to-sync list with less noise.
 
 ```text
-https://raw.githubusercontent.com/resname/UltimateDNSBlockList/refs/heads/main/lists/SmallDNSBlockList.txt
+https://raw.githubusercontent.com/resname/UltimateDNSBlockList/refs/heads/main/list/SmallDNSBlockList.txt
 ```
 
 Choose the small list for a more conservative setup, a resource-constrained resolver, or when you prefer a smaller subscription. Subscribe to one variant rather than both; the full list already provides broader coverage, so combining them mostly adds redundant entries.
@@ -59,7 +59,7 @@ These figures refer to memory available to the DNS filtering service, in additio
 This list blocks adult content. Use it only if you intend to filter that content.
 
 ```text
-https://raw.githubusercontent.com/resname/UltimateDNSBlockList/refs/heads/main/lists/NSFWBlockList.txt
+https://raw.githubusercontent.com/resname/UltimateDNSBlockList/refs/heads/main/list/NSFWBlockList.txt
 ```
 
 ### Small NSFW blocklist
@@ -67,7 +67,7 @@ https://raw.githubusercontent.com/resname/UltimateDNSBlockList/refs/heads/main/l
 This is a smaller alternative for adult-content filtering. Subscribe to one NSFW variant rather than both.
 
 ```text
-https://raw.githubusercontent.com/resname/UltimateDNSBlockList/refs/heads/main/lists/SmallNSFWBlockList.txt
+https://raw.githubusercontent.com/resname/UltimateDNSBlockList/refs/heads/main/list/SmallNSFWBlockList.txt
 ```
 
 ## Update Frequency
@@ -102,7 +102,7 @@ The GitHub Actions workflow lives in `.github/workflows/` and runs on a schedule
 - `version.txt` — current version for the full list
 - `small-version.txt` — current version for the small list
 - `nsfw-version.txt` and `nsfw-small-version.txt` — current versions for the NSFW lists
-- `lists/UltimateDNSBlockList.txt` — generated full output
-- `lists/SmallDNSBlockList.txt` — generated small output
-- `lists/NSFWBlockList.txt` — generated NSFW output
-- `lists/SmallNSFWBlockList.txt` — generated small NSFW output
+- `list/UltimateDNSBlockList.txt` — generated full output
+- `list/SmallDNSBlockList.txt` — generated small output
+- `list/NSFWBlockList.txt` — generated NSFW output
+- `list/SmallNSFWBlockList.txt` — generated small NSFW output
