@@ -3,8 +3,8 @@ name: Compile List
 # Controls when the workflow will run
 on:
   # Run all list builds every hour
-  schedule:
-    - cron: '25 * * * *'
+  # schedule:
+  #  - cron: '25 * * * *'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
