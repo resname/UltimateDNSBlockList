@@ -72,7 +72,7 @@ https://raw.githubusercontent.com/resname/UltimateDNSBlockList/refs/heads/main/l
 
 ## Update Frequency
 
-All four lists are updated at least once every day.
+All lists are updated hourly, provided the sources show any changes. 
 
 ## How the Workflow Works
 
